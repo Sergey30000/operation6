@@ -1,6 +1,10 @@
+--Start project
+git clone https://github.com/Sergey30000/operation6.git
+token for github password - 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
+
 --Start server
 cd /home/sergey/operation6/Server
-node index.js
+node index.js & disown %1
 
 --Copy
 cd /home/sergey/operation6
@@ -8,3 +12,17 @@ mkdir ./backup
 pg_dump -U postgres -d Profcom -h localhost -p 5432 -W  > ./backup/db_backup.sql
 cp -r /home/sergey/operation6/Server ./backup/Server_backup
 
+--delete
+dropdb -U postgres -h localhost -p 5432 -W Profcom
+createdb -U postgres -h localhost -p 5432 -W Profcom
+rm -rf /home/sergey/operation6/Server
+killall node
+
+--recovery
+psql -U postgres -h localhost -p 5432 -d Profcom -W < ./backup/db_backup.sql
+cd /home/sergey/operation6
+cp -r ./backup/Server_backup/ /home/sergey/operation6/Server
+
+--Repeat Start server
+cd /home/sergey/operation6/Server
+node index.js & disown %1
