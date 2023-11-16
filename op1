@@ -1,0 +1,10 @@
+--Start server
+cd /home/sergey/operation6/Server
+node index.js
+
+--Copy
+cd /home/sergey/operation6
+mkdir ./backup
+pg_dump -U postgres -d Profcom -h localhost -p 5432 -W  > ./backup/db_backup.sql
+cp -r /home/sergey/operation6/Server ./backup/Server_backup
+
