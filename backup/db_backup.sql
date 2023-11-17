@@ -262,6 +262,11 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 --
 
 COPY public.commenting_applications (id, content, "createdAt", "updatedAt", "userId", "guestRequestId") FROM stdin;
+1	ждите звонка	2023-11-17 22:07:49.831+04	2023-11-17 22:07:49.831+04	2	1
+2	ждите звонка	2023-11-17 22:07:49.861+04	2023-11-17 22:07:49.861+04	2	2
+3	ждите звонка	2023-11-17 22:07:49.883+04	2023-11-17 22:07:49.883+04	2	3
+4	ждите звонка	2023-11-17 22:07:49.903+04	2023-11-17 22:07:49.903+04	2	4
+5	ждите звонка	2023-11-17 22:07:49.927+04	2023-11-17 22:07:49.927+04	2	5
 \.
 
 
@@ -270,7 +275,8 @@ COPY public.commenting_applications (id, content, "createdAt", "updatedAt", "use
 --
 
 COPY public.credentials (id, login, password, role, "createdAt", "updatedAt") FROM stdin;
-1	admin	$2b$05$W4f2zj5lE7IlLKIPSULIdOhxFhP5l3UCU9RU0QtM5ZTQ.9cuQ8Y0m	ADMIN	2023-11-16 22:03:52.912+04	2023-11-16 22:03:52.912+04
+1	admin	$2b$05$VovQcnydw1GSN9JIrrpUreUdv2KExS/LxvmtQajtUqPMN8H3pzNXS	ADMIN	2023-11-17 22:07:32.197+04	2023-11-17 22:07:32.197+04
+2	volunteer	$2b$05$FPgA/TC0uiySpks4JDjTWOnVwYj.giAYY9uWQKbOH.C2pVLab1Ate	VOLUNTEER	2023-11-17 22:07:32.227+04	2023-11-17 22:07:32.227+04
 \.
 
 
@@ -279,6 +285,11 @@ COPY public.credentials (id, login, password, role, "createdAt", "updatedAt") FR
 --
 
 COPY public.feedbacks (id, "commentatorName", "commentatorSurname", comment, estimation, status, "createdAt", "updatedAt", "guestRequestId") FROM stdin;
+1	Andrey	Andreev	comment 1	5	MODERATION	2023-11-17 22:07:49.571+04	2023-11-17 22:07:49.571+04	\N
+2	Timur	Timurov	comment 2	5	MODERATION	2023-11-17 22:07:49.619+04	2023-11-17 22:07:49.619+04	\N
+3	Vasiliy	Vasiliev	comment 3	5	MODERATION	2023-11-17 22:07:49.651+04	2023-11-17 22:07:49.651+04	\N
+4	Oleg	Olegov	comment 4	5	MODERATION	2023-11-17 22:07:49.67+04	2023-11-17 22:07:49.67+04	\N
+5	Egor	Egorov	comment 5	5	MODERATION	2023-11-17 22:07:49.696+04	2023-11-17 22:07:49.696+04	\N
 \.
 
 
@@ -287,6 +298,11 @@ COPY public.feedbacks (id, "commentatorName", "commentatorSurname", comment, est
 --
 
 COPY public.guest_requests (id, surname, name, patronymic, phone, "commentGuest", status, "typeAssistance", "createdAt", "updatedAt") FROM stdin;
+1	Andreev	Andrey	Andreevich	+78007006052	commentGuest 1	NEW	\N	2023-11-17 22:07:49.722+04	2023-11-17 22:07:49.722+04
+2	Timurov	Timur	Timurovich	+78007006053	commentGuest 2	NEW	\N	2023-11-17 22:07:49.75+04	2023-11-17 22:07:49.75+04
+3	Vasiliev	Vasiliy	Vasilievich	+78007006054	commentGuest 3	NEW	\N	2023-11-17 22:07:49.764+04	2023-11-17 22:07:49.764+04
+4	Olegov	Oleg	Olegovich	+78007006055	commentGuest 4	NEW	\N	2023-11-17 22:07:49.792+04	2023-11-17 22:07:49.792+04
+5	Egorov	Egor	Egorovich	+78007006056	commentGuest 5	NEW	\N	2023-11-17 22:07:49.816+04	2023-11-17 22:07:49.816+04
 \.
 
 
@@ -295,7 +311,8 @@ COPY public.guest_requests (id, surname, name, patronymic, phone, "commentGuest"
 --
 
 COPY public.users (id, surname, name, patronymic, post, "placeWorkOrStudy", phone, email, "createdAt", "updatedAt", "credentialId") FROM stdin;
-1	Админов	Админ	Админович	Админ	СГТУ	+78007006050	admin@mail.ru	2023-11-16 22:03:52.935+04	2023-11-16 22:03:52.935+04	1
+1	Petrov	Petr	Petrovich	Admin	SSTU	+78007006050	admin@mail.ru	2023-11-17 22:07:32.219+04	2023-11-17 22:07:32.219+04	1
+2	Ivanov	Ivan	Ivanovich	Volunteer	SSTU	+78007006051	volunteer@mail.ru	2023-11-17 22:07:32.234+04	2023-11-17 22:07:32.234+04	2
 \.
 
 
@@ -303,35 +320,35 @@ COPY public.users (id, surname, name, patronymic, post, "placeWorkOrStudy", phon
 -- Name: commenting_applications_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.commenting_applications_id_seq', 1, false);
+SELECT pg_catalog.setval('public.commenting_applications_id_seq', 5, true);
 
 
 --
 -- Name: credentials_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.credentials_id_seq', 1, true);
+SELECT pg_catalog.setval('public.credentials_id_seq', 2, true);
 
 
 --
 -- Name: feedbacks_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.feedbacks_id_seq', 1, false);
+SELECT pg_catalog.setval('public.feedbacks_id_seq', 5, true);
 
 
 --
 -- Name: guest_requests_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.guest_requests_id_seq', 1, false);
+SELECT pg_catalog.setval('public.guest_requests_id_seq', 5, true);
 
 
 --
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 1, true);
+SELECT pg_catalog.setval('public.users_id_seq', 2, true);
 
 
 --
