@@ -33,7 +33,11 @@ const start = async () => {
         if (number === 0){
             const hashPassword = await bcrypt.hash("admin",5);
             const credential = await Credential.create({login: "admin",password:hashPassword,role:"ADMIN"});
-            await User.create({surname: "Админов",name: "Админ",patronymic: "Админович",post: "Админ",placeWorkOrStudy: "СГТУ",phone: "+78007006050",email: "admin@mail.ru",credentialId:credential.id});
+            await User.create({surname: "Petrov",name: "Petr",patronymic: "Petrovich",post: "Admin",placeWorkOrStudy: "SSTU",phone: "+78007006050",email: "admin@mail.ru",credentialId:credential.id});
+            
+            const hashPasswordv = await bcrypt.hash("volunteer",5);
+            const credentialv = await Credential.create({login: "volunteer",password:hashPasswordv,role:"VOLUNTEER"});
+            await User.create({surname: "Ivanov",name: "Ivan",patronymic: "Ivanovich",post: "Volunteer",placeWorkOrStudy: "SSTU",phone: "+78007006051",email: "volunteer@mail.ru",credentialId:credentialv.id});
         }
         
     } catch (e){
