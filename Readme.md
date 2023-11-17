@@ -3,7 +3,7 @@ cd /home/sergey
 mkdir operation6
 cd /home/sergey/operation6
 git clone https://github.com/Sergey30000/operation6.git
-//token for github password - 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
+//your token for github password - ghp_TVmwvxGO5oCx2CxIG5OZNvKqFHRt7w08jpTP
 
 //1 Start server
 #!/bin/bash
@@ -34,7 +34,21 @@ curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $1" -
 curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $1" -d '{"content":"ждите звонка","userId":2,"guestRequestId":5}' $url3;
 
 //2 Reading data
+#!/bin/bash
+url1="http://localhost:3001/api/user/admin/req";
+curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer $1" $url1;
 
+url2="http://localhost:3001/api/credential/";
+curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer $1" $url2;
+
+url3="http://localhost:3001/api/feedback/";
+curl -X GET -H "Content-Type: application/json" $url3;
+
+url4="http://localhost:3001/api/guestRequest/admin/statusStatistics";
+curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer $1" $url4;
+
+url5="http://localhost:3001/api/commentingApplication/";
+curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer $1" $url5;
 
 //3 Backup server and db
 #!/bin/bash
