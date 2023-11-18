@@ -1,11 +1,22 @@
-//1 Create project
-cd /home/sergey
-mkdir operation6
-cd /home/sergey/operation6
+//1.1 Create project on Linux Ubuntu
+cd /home/$USER
+mkdir operation6_Moiseenko
+cd ./operation6_Moiseenko
+sudo apt install git
 git clone https://github.com/Sergey30000/operation6.git
-//your token for github password - ghp_TVmwvxGO5oCx2CxIG5OZNvKqFHRt7w08jpTP
+cd scripts
 
-//1 Start server
+//1.2 init project
+#!/bin/bash
+sudo apt install npm
+cd ~
+cd ./operation6_Moiseenko/Server
+sudo apt install curl
+npm install
+sudo apt install postgresql
+createdb -U postgres -h localhost -p 5432 -W Profcom
+
+//1.3 Start server
 #!/bin/bash
 cd /home/sergey/operation6/Server
 node index.js & disown %1
