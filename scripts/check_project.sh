@@ -1,16 +1,14 @@
 #!/bin/bash
-cd ~
-if [ -d "./operation6_Moiseenko" ]; then
-	cd ./operation6_Moiseenko
-	git status
-	if pg_config &> /dev/null; then
-		psql -U postgres -h localhost -p 5432 -d Profcom -W <<EOF
+cd $(dirname $0)
+cd ..
+git status
+if command -v pg_config &> /dev/null; then
+	psql -U postgres -h localhost -p 5432 -d Profcom -W <<EOF
 \dt
 \q
 EOF
-	else
-		echo "You need to install PostgreSql"
-	fi
+	exit 1
 else
-	echo "There ./operation6_Moiseenko is no path"
+	echo "You need to install PostgreSql"
+	exit 1
 fi

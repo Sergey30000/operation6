@@ -1,4 +1,6 @@
 #!/bin/bash
+cd $(dirname $0)
+cd ..
 if command -v npm &> /dev/null; then
 	echo "npm is installed"
 else
@@ -9,16 +11,15 @@ if command -v curl &> /dev/null; then
 else
 	sudo apt install curl
 fi
-cd ~
-if [ -d "./operation6_Moiseenko/Server" ]; then
-	if [ -d "./operation6_Moiseenko/Server/node_modules" ]; then
-		echo "This directory ./operation6_Moiseenko/Server already exists"
+if [ -d "./Server" ]; then
+	if [ -d "./Server/node_modules" ]; then
+		echo "This directory ./Server already exists"
 	else
-		cd ./operation6_Moiseenko/Server
+		cd ./Server
 		npm install
 	fi
 else
-	echo "There ./operation6_Moiseenko/Server is no path"
+	echo "There ./Server is no path"
 fi
 if pg_config &> /dev/null; then
 	echo "PostgreSQL is installed"

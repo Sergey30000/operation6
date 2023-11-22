@@ -14,6 +14,8 @@ if command -v curl &> /dev/null; then
 
 	url5="http://localhost:3001/api/commentingApplication/";
 	curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer $1" $url5;
+	exit 1
 else
 	echo "You need to install curl"
+	exit 1
 fi

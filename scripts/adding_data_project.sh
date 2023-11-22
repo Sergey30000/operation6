@@ -30,6 +30,8 @@ if command -v curl &> /dev/null; then
 		curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $1" -d '{"content":"ждите звонка","userId":2,"guestRequestId":4}' $url3;
 		curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer $1" -d '{"content":"ждите звонка","userId":2,"guestRequestId":5}' $url3;
 	done
+	exit 1
 else
 	echo "You need to install curl"
+	exit 1
 fi
