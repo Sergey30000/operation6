@@ -7,7 +7,7 @@ git clone https://github.com/Sergey30000/operation6.git
 cd scripts
 
 //1.2 Init project
-bash init_project.sh //Installation of everything necessary for the application
+bash init_project.sh postgres_password //Installation of everything necessary for the application
 bash updatePasswordPostgreSql.sh "new_password" //Updating password if your password is not "postgres"
 
 //1.3 Start server
