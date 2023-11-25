@@ -42,3 +42,6 @@ bash check_project.sh //Checking successful application recovery
 
 //6.4 Stop project
 bash stop_project.sh //Stop the server
+
+//6.5 Clear temporary files
+bash clear_temporary_files.sh //Clear temporary files
